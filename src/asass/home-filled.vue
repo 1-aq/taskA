@@ -2,7 +2,7 @@
   <div class="home-filled">
     <div class="statistics1">
       <ul class="uu">
-        <li v-for="(item, index) in panels" :key="index">
+        <li class="li" v-for="(item, index) in panels" :key="index">
           <p>
             {{ item.title
             }}<el-button :type="item.unitColor">{{ item.unit }}</el-button>
@@ -16,16 +16,53 @@
         </li>
       </ul>
     </div>
+    <div class="tab">
+      <ul class="uu1">
+        <li v-for="(SubItem, SubIndex) in List" :key="SubIndex" class="lis">
+          <div>
+            <i
+              :style="`color:${SubItem.clock}`"
+              :class="'el-icon-' + SubItem.icon"
+            ></i>
+            <p>{{ SubItem.name }}</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="three">
+      <div class="Left"></div>
+      <div class="right"></div>
+    </div>
   </div>
 </template>
 
 <script>
 import { GetStat } from "@/api/resquery";
+import GetList from "./home-filled.json";
+import echarts from "@/echarts.min.js";
 export default {
-  // name:'Roles',
   data() {
+    // var myChart = echarts.init(document.querySelector(".left"));
+    // let option = {
+    //   xAxis: {
+    //     type: "category",
+    //     data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    //   },
+    //   yAxis: {
+    //     type: "value",
+    //   },
+    //   series: [
+    //     {
+    //       data: [120, 200, 150, 80, 70, 110, 130],
+    //       type: "bar",
+    //     },
+    //   ],
+    // };
+    // myChart.setOption(option);
+
     return {
       panels: {},
+      List: {},
     };
   },
   // 计算属性
@@ -39,12 +76,16 @@ export default {
     async GetData() {
       const res = await GetStat();
       this.panels = res.data.data.panels;
-      console.log(this.panels);
+    },
+    async GetListS() {
+      this.List = await GetList;
+      console.log(this.List);
     },
   },
   // 创建后
   created() {
     console.log(this.GetData());
+    console.log(this.GetListS());
   },
 };
 </script>
@@ -55,16 +96,16 @@ export default {
   display: flex;
   justify-content: space-around;
   box-sizing: border-box;
-  li {
-    width: 200px;
-    height: 150px;
+  .li {
+    width: 23%;
+    height: 176px;
     // border: 1px solid red;
     background-color: #fff;
     border-radius: 10px;
 
     p {
       width: 100%;
-      line-height: 35px;
+      line-height: 40px;
       display: flex;
       justify-content: space-between;
       border-bottom: 1px solid #ccc;
@@ -77,21 +118,51 @@ export default {
       box-sizing: border-box;
       color: #6b7280;
       h1 {
-        height: 60px;
-        line-height: 60px;
+        height: 70px;
+        line-height: 70px;
         border-bottom: 1px solid #ccc;
         font-size: 35px;
       }
       span {
         display: flex;
         justify-content: space-between;
-        line-height: 35px;
+        line-height: 44px;
         font-size: 14px;
+        u {
+          text-decoration: none;
+        }
       }
     }
   }
-  u {
-    text-decoration: none;
+}
+.tab {
+  width: 100%;
+  .uu1 {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    .lis {
+      width: 10%;
+      // border: 1px solid #cfcfcf;
+      border-radius: 3px;
+      text-align: center;
+      background-color: #fff;
+      height: 77px;
+      div {
+        margin-top: 19px;
+        i {
+          margin-bottom: 8px;
+        }
+      }
+    }
   }
+}
+.three {
+  width: 100%;
+  border: 1px solid red;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
 }
 </style>

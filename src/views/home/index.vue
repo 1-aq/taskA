@@ -4,7 +4,7 @@
       <div class="rals">积云编程</div>
       <div class="img">
         <i @click="utc" class="el-icon-set-up"></i>
-        <i @click='sx' class="el-icon-refresh-left q"></i>
+        <i @click="sx" class="el-icon-refresh-left q"></i>
       </div>
       <div class="list">
         <i class="el-icon-cpu"></i>
@@ -17,7 +17,6 @@
           :key="index"
           :item="item"
           :collapse="isCollapse"
-       
         ></Aside>
       </aside>
       <main>
@@ -61,9 +60,9 @@ export default {
     utc() {
       this.isCollapse = !this.isCollapse;
     },
-    sx(){
-      window.location.reload()
-    }
+    sx() {
+      window.location.reload();
+    },
   },
   // 创建后
   created() {
