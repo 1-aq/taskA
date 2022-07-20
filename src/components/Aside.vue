@@ -1,7 +1,12 @@
 <template>
   <div class="Aside">
-    <el-menu default-active="2" class="el-menu-vertical-demo">
-      <el-submenu :index="item.id">
+    <el-menu
+      :style="{ width: collapse ? '64px' : '200px' }"
+      default-active="2"
+      router
+      class="el-menu-vertical-demo"
+    >
+      <el-submenu :index="item.icon">
         <template slot="title">
           <i :class="'el-icon-' + item.icon"></i>
           <span>{{ item.name }}</span>
@@ -12,7 +17,7 @@
         >
           <el-menu-item
             :class="'el-icon-' + SubItem.icon"
-            :index="SubItem.id"
+            :index="SubItem.icon"
             >{{ SubItem.name }}</el-menu-item
           >
         </el-menu-item-group>
@@ -27,6 +32,7 @@ export default {
       type: Object,
       default: "",
     },
+    collapse: Boolean,
   },
   data() {
     return {};

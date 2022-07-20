@@ -1,5 +1,7 @@
 <template>
-  <div class="Main">页面</div>
+  <div class="Main">
+    <router-view></router-view>
+  </div>
 </template>
 <script>
 export default {

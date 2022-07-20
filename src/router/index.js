@@ -10,6 +10,23 @@ const routes = [
     path: "/",
     name: "home",
     component: Home,
+    children: [
+      {
+        path: "/home-filled",
+        name: "home-filled",
+        component: () => import("@/asass/home-filled.vue"),
+      },
+      {
+        path: "/shopping-cart-full",
+        name: "shopping-cart-full",
+        component: () => import("@/asass/shopping-cart-full.vue"),
+      },
+      {
+        path: "/menu",
+        name: "menu",
+        component: () => import("@/asass/menu.vue"),
+      },
+    ],
   },
   {
     path: "/Login",

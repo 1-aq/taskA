@@ -3,8 +3,8 @@
     <div class="header">
       <div class="rals">积云编程</div>
       <div class="img">
-        <i class="el-icon-set-up"></i>
-        <i class="el-icon-refresh-left q"></i>
+        <i @click="utc" class="el-icon-set-up"></i>
+        <i @click='sx' class="el-icon-refresh-left q"></i>
       </div>
       <div class="list">
         <i class="el-icon-cpu"></i>
@@ -16,6 +16,8 @@
           v-for="(item, index) in this.List"
           :key="index"
           :item="item"
+          :collapse="isCollapse"
+       
         ></Aside>
       </aside>
       <main>
@@ -37,6 +39,7 @@ export default {
       token: "",
       res: [],
       List: {},
+      isCollapse: false,
     };
   },
   // 计算属性
@@ -47,17 +50,24 @@ export default {
   watch: {},
   // 使用data属性里面的方法
   methods: {
+    // 获取侧边栏数据
     async GetList() {
       this.token = getItem("token");
       this.res = await GetCategory(this.token);
       this.List = this.res.data.data.menus;
-      console.log(this.List);
+      // console.log(this.List);
     },
+
+    utc() {
+      this.isCollapse = !this.isCollapse;
+    },
+    sx(){
+      window.location.reload()
+    }
   },
   // 创建后
   created() {
-    // this.GetList();
-    console.log(this.GetList());
+    this.GetList();
   },
   components: {
     Main,
@@ -99,7 +109,6 @@ export default {
 aside {
   color: #333;
   height: 90vh;
-  width: 290px;
 }
 
 main {
