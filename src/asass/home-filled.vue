@@ -39,11 +39,16 @@
 <script>
 import { GetStat } from "@/api/resquery";
 import GetList from "./home-filled.json";
-import echarts from "@/echarts.min.js";
+import echarts from "echarts";
+
+var chartDom = document.getElementsByClassName(".Left");
+var myChart = echarts.init(chartDom);
+
+var option;
+
 export default {
   data() {
-    // var myChart = echarts.init(document.querySelector(".left"));
-    // let option = {
+    // option = {
     //   xAxis: {
     //     type: "category",
     //     data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
@@ -58,8 +63,7 @@ export default {
     //     },
     //   ],
     // };
-    // myChart.setOption(option);
-
+    // option && myChart.setOption(option);
     return {
       panels: {},
       List: {},
