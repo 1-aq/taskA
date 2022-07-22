@@ -11,3 +11,7 @@ export const GetCategory = (params) => {
 export const GetStat = () => {
   return http({ url: "/admin/statistics1", method: "GET" });
 };
+
+export const GetTab = (all) => {
+  return http({ url: `admin/goods/1?tab=${all}`, method: "GET" });
+};

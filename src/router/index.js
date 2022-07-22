@@ -26,6 +26,11 @@ const routes = [
         name: "menu",
         component: () => import("@/asass/menu.vue"),
       },
+      {
+        path: "/aim",
+        name: "aim",
+        component: () => import("@/asass/skus.vue"),
+      },
     ],
   },
   {

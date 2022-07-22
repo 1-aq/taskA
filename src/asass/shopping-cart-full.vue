@@ -1,5 +1,5 @@
 <template>
-<div class="shopping-cart-full">shopping-cart-full页面</div>
+<div class="shopping-cart-full">111-cart-full页面</div>
 </template>
 <script>
 export default {
